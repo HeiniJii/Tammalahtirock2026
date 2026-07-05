@@ -1,16 +1,498 @@
-<!DOCTYPE html><html lang="fi"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tammalahtirock</title><link rel="stylesheet" href="style.css"></head>
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Tammalahtirock</title>
+
+    <meta
+        name="theme-color"
+        content="#b5121b">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
 <body>
-<header class="hero"><div class="banner">TAMMALAHTIROCK</div><p>Maailman rennoimmat yksityisfestarit</p></header>
+
+<header class="hero">
+
+    <div class="hero-overlay">
+
+        <div class="festival-banner">
+
+            <h1>TAMMALAHTIROCK</h1>
+
+        </div>
+
+        <p class="festival-tagline">
+
+            Maailman rennoimmat yksityisfestarit
+
+        </p>
+
+        <p class="festival-location">
+
+            🌲 Tammalahti
+
+        </p>
+
+    </div>
+
+</header>
+
+<nav class="bottom-nav">
+
+    <button onclick="showPage('home')">
+
+        🏠
+
+        <span>Koti</span>
+
+    </button>
+
+    <button onclick="showPage('map')">
+
+        🗺️
+
+        <span>Kartta</span>
+
+    </button>
+
+    <button onclick="showPage('schedule')">
+
+        📅
+
+        <span>Ohjelma</span>
+
+    </button>
+
+    <button onclick="showPage('passport')">
+
+        🎫
+
+        <span>Passi</span>
+
+    </button>
+
+    <button onclick="showPage('gallery')">
+
+        📸
+
+        <span>Kuvat</span>
+
+    </button>
+
+    <button onclick="showPage('news')">
+
+        📰
+
+        <span>Uutiset</span>
+
+    </button>
+
+    <button onclick="showPage('destiny')">
+
+        🎲
+
+        <span>Kohtalo</span>
+
+    </button>
+
+</nav>
+
 <main>
-<section class="card"><h2 id="welcome">Tervetuloa!</h2><input id="playerName" placeholder="Etunimesi"><button onclick="createPassport()">Luo festaripassi</button><div id="passportCard"></div></section>
-<section class="card"><h2>🗺️ Aluekartta</h2><div class="map">
-<button onclick="showInfo('🎤 Lava','Bändi klo 20')">🎤</button>
-<button onclick="showInfo('📸 Kuvakoju','Ota kuva!')">📸</button>
-<button onclick="showInfo('🎲 Kohtalon Koju','Arvo tehtävä.')">🎲</button>
-<button onclick="showInfo('✨ Glitteri','Kimallusta!')">✨</button>
-</div><div id="mapInfo">Valitse kohde.</div></section>
-<section class="card"><h2>📰 BREAKING NEWS</h2><div id="news"></div></section>
-<section class="card"><h2>🎲 Kohtalon Koju</h2><button onclick="drawDestiny()">Arvo kohtalo</button><p id="destiny"></p></section>
-</main><script src="script.js"></script></body></html>
+
+<!-- ====================================== -->
+<!-- ETUSIVU                                -->
+<!-- ====================================== -->
+
+<section
+    id="home"
+    class="page active">
+
+    <div class="card welcome-card">
+
+        <h2 id="welcomeMessage">
+
+            Tervetuloa Tammalahtirockiin!
+
+        </h2>
+
+        <p>
+
+            Luo oma festaripassi ja aloita
+            festariseikkailu.
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            🎸 Seuraavana ohjelmassa
+
+        </h2>
+
+        <div class="next-event">
+
+            <div class="event-time">
+
+                20.00
+
+            </div>
+
+            <div class="event-info">
+
+                <strong>
+
+                    Illan pääesiintyjä
+
+                </strong>
+
+                <br>
+
+                Päälava
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            🔥 Festaritunnelma
+
+        </h2>
+
+        <p>
+
+            Muista käydä vähintään yhdessä
+            kojussa ennen illan keikkaa!
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ====================================== -->
+<!-- ALUEKARTTA                             -->
+<!-- ====================================== -->
+
+<section
+    id="map"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+
+            🗺️ Aluekartta
+
+        </h2>
+
+        <p>
+
+            Napauta kohdetta nähdäksesi lisätiedot.
+
+        </p>
+
+        <div class="festival-map">
+
+            <button
+                class="map-pin stage"
+                onclick="showLocation('stage')">
+
+                🎤
+
+                <span>Lava</span>
+
+            </button>
+
+            <button
+                class="map-pin photo"
+                onclick="showLocation('photo')">
+
+                📸
+
+                <span>Valokuvakoju</span>
+
+            </button>
+
+            <button
+                class="map-pin glitter"
+                onclick="showLocation('glitter')">
+
+                ✨
+
+                <span>Glitter</span>
+
+            </button>
+
+            <button
+                class="map-pin destiny"
+                onclick="showLocation('destiny')">
+
+                🎲
+
+                <span>Kohtalon Koju</span>
+
+            </button>
+
+            <button
+                class="map-pin fire">
+
+                🔥
+
+                <span>Nuotio</span>
+
+            </button>
+
+            <button
+                class="map-pin toilet">
+
+                🚻
+
+                <span>WC</span>
+
+            </button>
+
+        </div>
+
+        <div
+            id="mapInfo"
+            class="map-info">
+
+            Valitse kohde kartalta.
+
+        </div>
+<!-- ====================================== -->
+<!-- OHJELMA                                -->
+<!-- ====================================== -->
+
+<section
+    id="schedule"
+    class="page">
+
+    <div class="card">
+
+        <h2>📅 Festariohjelma</h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="time">16:00</div>
+                <div class="content">
+                    Portit avautuvat
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time">17:00</div>
+                <div class="content">
+                    Glitter- & tatuointipaja
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time">18:00</div>
+                <div class="content">
+                    Kohtalon Koju avautuu
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time">20:00</div>
+                <div class="content">
+                    🎸 Illan pääesiintyjä
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time">22:00</div>
+                <div class="content">
+                    Nuotio & iltajamit
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ====================================== -->
+<!-- FESTARIPASSI                           -->
+<!-- ====================================== -->
+
+<section
+    id="passport"
+    class="page">
+
+    <div class="card">
+
+        <h2>🎫 Digitaalinen festaripassi</h2>
+
+        <p>
+
+            Luo oma festaripassi.
+
+        </p>
+
+        <input
+            id="playerName"
+            type="text"
+            placeholder="Etunimesi">
+
+        <button
+            class="primary-button"
+            onclick="createPassport()">
+
+            Luo festaripassi
+
+        </button>
+
+    </div>
+
+    <div
+        id="passportCard">
+
+    </div>
+
+</section>
+
+<!-- ====================================== -->
+<!-- KUVAGALLERIA                           -->
+<!-- ====================================== -->
+
+<section
+    id="gallery"
+    class="page">
+
+    <div class="card">
+
+        <h2>📸 Kuvagalleria</h2>
+
+        <p>
+
+            Festarikuvat ilmestyvät tänne
+            pitkin iltaa.
+
+        </p>
+
+        <div
+            id="galleryGrid"
+            class="gallery-grid">
+
+            <div class="gallery-placeholder">
+
+                Ensimmäisiä kuvia odotellaan...
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ====================================== -->
+<!-- FEIKKIUUTISET                          -->
+<!-- ====================================== -->
+
+<section
+    id="news"
+    class="page">
+
+    <div class="card">
+
+        <div class="breaking-news">
+
+            BREAKING NEWS
+
+        </div>
+
+        <h2>
+
+            Festariradio
+
+        </h2>
+
+        <div
+            id="newsContainer">
+
+            Uutinen latautuu...
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ====================================== -->
+<!-- KOHTALON KOJU                          -->
+<!-- ====================================== -->
+
+<section
+    id="destiny"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+
+            🎲 Kohtalon Koju
+
+        </h2>
+
+        <p>
+
+            Paina nappia ja kohtalo päättää,
+            mitä sinun tulee tehdä.
+
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="drawDestiny()">
+
+            ARVO KOHTALO
+
+        </button>
+
+        <div
+            id="destinyCard"
+            class="destiny-card">
+
+            Kohtalo odottaa...
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
+    </div>
+
+</section>
