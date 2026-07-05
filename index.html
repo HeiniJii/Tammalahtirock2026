@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tammalahtirock</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0d1117;
+    color:white;
+}
+
+header{
+
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.4);
+
+}
+
+header h1{
+
+    font-size:3rem;
+
+    letter-spacing:3px;
+
+    margin-bottom:10px;
+
+}
+
+header p{
+
+    opacity:.9;
+
+    font-size:1.1rem;
+
+}
+
+.countdown{
+
+    margin-top:25px;
+
+    font-size:1.3rem;
+
+    font-weight:bold;
+
+}
+
+main{
+
+    width:95%;
+    max-width:900px;
+
+    margin:auto;
+
+    padding-bottom:120px;
+
+}
+
+.card{
+
+    background:#161b22;
+
+    border-radius:20px;
+
+    margin-top:25px;
+
+    padding:22px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.3);
+
+}
+
+.card h2{
+
+    margin-bottom:15px;
+
+    color:#60a5fa;
+
+}
+
+.heroButton{
+
+    margin-top:20px;
+
+    background:#ec4899;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 28px;
+
+    border-radius:12px;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.heroButton:hover{
+
+    background:#db2777;
+
+    transform:scale(1.05);
+
+}
+
+.newsFlash{
+
+    margin-top:15px;
+
+    background:#dc2626;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+}
+
+.bottomNav{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    height:75px;
+
+    background:#161b22;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    border-top:1px solid #30363d;
+
+}
+
+.navItem{
+
+    color:white;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    font-size:.8rem;
+
+}
+
+.navItem span{
+
+    display:block;
+
+    font-size:1.7rem;
+
+    margin-bottom:3px;
+
+}
+
+.section{
+
+    display:none;
+
+}
+
+.active{
+
+    display:block;
+
+}
+
+footer{
+
+    text-align:center;
+
+    margin:50px;
+
+    opacity:.5;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🎸 TAMMALAHTIROCK</h1>
+
+<p>Maailman rennoimmat yksityisfestarit</p>
+
+<div class="countdown">
+
+Kesä on täällä ☀️
+
+</div>
+
+<button class="heroButton">
+
+Tervetuloa Festareille!
+
+</button>
+
+</header>
+
+<main>
+
+<section id="home" class="section active">
+
+<div class="card">
+
+<h2>🎉 Tervetuloa!</h2>
+
+<p>
+
+Tervetuloa Tammalahtirockiin!
+
+Tämä sovellus toimii oppaanasi koko festivaalin ajan.
+
+Täältä löydät ohjelman, aluekartan, festaripassin,
+
+kuvagallerian sekä paljon muuta.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🎤 Seuraavana ohjelmassa</h2>
+
+<h3>Bändi aloittaa</h3>
+
+<p>20:00</p>
+
+</div>
+
+<div class="card">
+
+<h2>📰 BREAKING NEWS</h2>
+
+<div class="newsFlash">
+
+Glitteri- & tatuointipaja avattu.
+
+Ensimmäiset kimaltavat parrat havaittu.
+
+</div>
+
+</div>
+
+</section>
+
+<section id="map" class="section">
+
+<div class="card">
+
+<h2>🗺️ Aluekartta</h2>
+
+<p>
+
+Tulossa seuraavassa vaiheessa.
+
+</p>
+
+</div>
+
+</section>
+
+<section id="schedule" class="section">
+
+<div class="card">
+
+<h2>📅 Festariohjelma</h2>
+
+<p>
+
+Tulossa seuraavassa vaiheessa.
+
+</p>
+
+</div>
+
+</section>
+
+<section id="passport" class="section">
+
+<div class="card">
+
+<h2>🎫 Festaripassi</h2>
+
+<p>
+
+Tulossa seuraavassa vaiheessa.
+
+</p>
+
+</div>
+
+</section>
+
+<section id="gallery" class="section">
+
+<div class="card">
+
+<h2>📸 Kuvagalleria</h2>
+
+<p>
+
+Tulossa seuraavassa vaiheessa.
+
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+<nav class="bottomNav">
+
+<a href="#" class="navItem" onclick="showSection('home')">
+
+<span>🏠</span>
+
+Koti
+
+</a>
+
+<a href="#" class="navItem" onclick="showSection('map')">
+
+<span>🗺️</span>
+
+Kartta
+
+</a>
+
+<a href="#" class="navItem" onclick="showSection('schedule')">
+
+<span>📅</span>
+
+Ohjelma
+
+</a>
+
+<a href="#" class="navItem" onclick="showSection('passport')">
+
+<span>🎫</span>
+
+Passi
+
+</a>
+
+<a href="#" class="navItem" onclick="showSection('gallery')">
+
+<span>📸</span>
+
+Kuvat
+
+</a>
+
+</nav>
+
+<footer>
+
+Tammalahtirock © 2026
+
+</footer>
+
+<script>
+
+function showSection(id){
+
+const sections=document.querySelectorAll(".section");
+
+sections.forEach(section=>{
+
+section.classList.remove("active");
+
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>
