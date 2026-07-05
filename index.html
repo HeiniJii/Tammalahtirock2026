@@ -86,7 +86,13 @@
     <button onclick="showPage('gallery')">
 
         📸
+<button onclick="showPage('photoBooth')">
 
+    📷
+
+    <span>Koju</span>
+
+</button>
         <span>Kuvat</span>
 
     </button>
@@ -378,7 +384,92 @@
 <!-- ====================================== -->
 <!-- KUVAGALLERIA                           -->
 <!-- ====================================== -->
+<!-- ====================================== -->
+<!-- VALOKUVAKOJU                           -->
+<!-- ====================================== -->
 
+<section
+    id="photoBooth"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+
+            📸 Valokuvakoju
+
+        </h2>
+
+        <p>
+
+            Ota kuva ja lisää se
+            festarigalleriaan.
+
+        </p>
+
+        <video
+
+            id="camera"
+
+            autoplay
+
+            playsinline
+
+            muted>
+
+        </video>
+
+        <canvas
+
+            id="photoCanvas"
+
+            style="display:none;">
+
+        </canvas>
+
+        <img
+
+            id="photoPreview"
+
+            style="display:none;">
+
+        <div class="photo-buttons">
+
+            <button
+
+                class="primary-button"
+
+                onclick="startCamera()">
+
+                Käynnistä kamera
+
+            </button>
+
+            <button
+
+                class="primary-button"
+
+                onclick="takePhoto()">
+
+                📷 Ota kuva
+
+            </button>
+
+            <button
+
+                class="primary-button"
+
+                onclick="uploadPhoto()">
+
+                ☁️ Lähetä kuva
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
 <section
     id="gallery"
     class="page">
