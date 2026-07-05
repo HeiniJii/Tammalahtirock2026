@@ -52,13 +52,7 @@ const festivalNames=[
 /* LEIMAT */
 /* ================================================ */
 
-const defaultStamps=[
-
-    "📸",
-    "🎲",
-    "✨"
-
-];
+const defaultStamps=[];
 
 /* ================================================ */
 /* PASSIN LUONTI */
@@ -475,3 +469,38 @@ document.addEventListener("DOMContentLoaded",()=>{
     showPage("home");
 
 });
+/* ================================================= */
+/* QR-LEIMAT */
+/* ================================================= */
+
+function handleQRStamp(){
+
+    const params = new URLSearchParams(window.location.search);
+
+    const stamp = params.get("stamp");
+
+    if(!stamp) return;
+
+    const icons = {
+
+        photo: "📸",
+
+        glitter: "✨",
+
+        destiny: "🎲"
+
+    };
+
+    if(icons[stamp]){
+
+        addStamp(icons[stamp]);
+
+        alert("Leima lisätty festaripassiin!");
+
+    }
+
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+}
+
+handleQRStamp();
