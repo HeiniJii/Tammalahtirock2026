@@ -1,1 +1,836 @@
-body{margin:0;font-family:Arial;background:#132018;color:#fff}.hero{text-align:center;padding:24px}.banner{display:inline-block;background:#b11217;padding:12px 24px;font-size:2rem;font-weight:bold}.card{background:#1f2421;margin:18px;padding:18px;border-radius:12px}button{background:#b11217;color:#fff;border:0;border-radius:8px;padding:10px 14px;margin:4px}input{width:100%;padding:10px;margin:10px 0}.map{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+/* ================================================= */
+/* TAMMALAHTIROCK v3 */
+/* STYLE.CSS */
+/* ================================================= */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:#132018;
+
+    color:white;
+
+    font-family:
+
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    min-height:100vh;
+
+}
+
+/* ================================================= */
+/* YLÄOSA */
+/* ================================================= */
+
+.hero{
+
+    background:
+
+        linear-gradient(
+
+            rgba(0,0,0,.35),
+
+            rgba(0,0,0,.65)
+
+        ),
+
+        linear-gradient(
+
+            180deg,
+
+            #35552d,
+
+            #132018
+
+        );
+
+    padding:
+
+        40px
+        20px
+        30px;
+
+    text-align:center;
+
+}
+
+.hero-overlay{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+.festival-banner{
+
+    display:inline-block;
+
+    background:#b5121b;
+
+    color:white;
+
+    padding:
+
+        16px
+        28px;
+
+    border-radius:10px;
+
+    box-shadow:
+
+        0 8px 24px rgba(0,0,0,.35);
+
+}
+
+.festival-banner h1{
+
+    letter-spacing:4px;
+
+    font-size:2rem;
+
+}
+
+.festival-tagline{
+
+    margin-top:18px;
+
+    font-size:1.05rem;
+
+    opacity:.9;
+
+}
+
+.festival-location{
+
+    margin-top:8px;
+
+    color:#f6d36c;
+
+    font-weight:bold;
+
+}
+
+/* ================================================= */
+/* NAVIGOINTI */
+/* ================================================= */
+
+.bottom-nav{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    height:76px;
+
+    background:#1a1a1a;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    border-top:
+
+        2px solid #b5121b;
+
+    z-index:999;
+
+}
+
+.bottom-nav button{
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:4px;
+
+    font-size:1.35rem;
+
+    transition:.25s;
+
+}
+
+.bottom-nav button span{
+
+    font-size:.70rem;
+
+}
+
+.bottom-nav button:hover{
+
+    transform:translateY(-4px);
+
+    color:#f6d36c;
+
+}
+
+/* ================================================= */
+/* SIVUT */
+/* ================================================= */
+
+main{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:
+
+        20px;
+
+    padding-bottom:120px;
+
+}
+
+.page{
+
+    display:none;
+
+    animation:
+
+        fadeIn .35s;
+
+}
+
+.page.active{
+
+    display:block;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+/* ================================================= */
+/* KORTIT */
+/* ================================================= */
+
+.card{
+
+    background:#1d2b22;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:22px;
+
+    box-shadow:
+
+        0 10px 30px rgba(0,0,0,.30);
+
+}
+
+.card h2{
+
+    margin-bottom:14px;
+
+    color:#ffffff;
+
+}
+
+.card p{
+
+    line-height:1.6;
+
+    color:#d8d8d8;
+
+}
+
+/* ================================================= */
+/* PAINIKKEET */
+/* ================================================= */
+
+.primary-button{
+
+    width:100%;
+
+    background:#b5121b;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    font-size:1rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.primary-button:hover{
+
+    background:#cf1d28;
+
+    transform:translateY(-2px);
+
+}
+
+.primary-button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ================================================= */
+/* INPUTIT */
+/* ================================================= */
+
+input{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:none;
+
+    margin:16px 0;
+
+    font-size:1rem;
+
+    background:#2d3d33;
+
+    color:white;
+
+}
+
+input::placeholder{
+
+    color:#bfc8bf;
+
+}
+
+/* ================================================= */
+/* ETUSIVU */
+/* ================================================= */
+
+.next-event{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.event-time{
+
+    background:#b5121b;
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.2rem;
+
+    font-weight:bold;
+
+}
+
+.event-info{
+
+    line-height:1.5;
+
+}
+
+/* ================================================= */
+/* AIKAJANA */
+/* ================================================= */
+
+.timeline{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.timeline-item{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.time{
+
+    min-width:70px;
+
+    font-weight:bold;
+
+    color:#f6d36c;
+
+}
+
+.content{
+
+    flex:1;
+
+    background:#26352b;
+
+    border-radius:10px;
+
+    padding:12px;
+
+}
+
+/* ================================================= */
+/* FESTARIPASSI */
+/* ================================================= */
+
+#passportCard{
+
+    margin-top:22px;
+
+}
+
+.passport{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #b5121b,
+            #6e0d13
+        );
+
+    border-radius:20px;
+
+    padding:26px;
+
+    color:white;
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,.35);
+
+}
+
+.passport h3{
+
+    font-size:1.7rem;
+
+    margin-bottom:8px;
+
+    letter-spacing:2px;
+
+}
+
+.passport-id{
+
+    margin-top:16px;
+
+    font-size:.9rem;
+
+    opacity:.9;
+
+}
+
+.stamp-container{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+
+}
+
+.stamp{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.18);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.4rem;
+
+}
+      /* ================================================= */
+/* FESTARIKARTTA */
+/* ================================================= */
+
+.festival-map{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-top:20px;
+
+}
+
+.map-pin{
+
+    background:#2c3d32;
+
+    border:2px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    min-height:110px;
+
+    color:white;
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:2rem;
+
+    transition:.25s;
+
+}
+
+.map-pin span{
+
+    font-size:.90rem;
+
+    font-weight:bold;
+
+}
+
+.map-pin:hover{
+
+    transform:translateY(-4px);
+
+    background:#36513f;
+
+    border-color:#f6d36c;
+
+}
+
+.map-info{
+
+    margin-top:22px;
+
+    padding:18px;
+
+    background:#26352b;
+
+    border-radius:12px;
+
+    min-height:70px;
+
+}
+
+/* ================================================= */
+/* KUVAGALLERIA */
+/* ================================================= */
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(140px,1fr));
+
+    gap:16px;
+
+    margin-top:20px;
+
+}
+
+.gallery-placeholder{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    border-radius:14px;
+
+    background:#26352b;
+
+    color:#bfc8bf;
+
+}
+
+.gallery-image{
+
+    width:100%;
+
+    aspect-ratio:1;
+
+    object-fit:cover;
+
+    border-radius:14px;
+
+    box-shadow:
+
+        0 6px 18px rgba(0,0,0,.30);
+
+}
+
+/* ================================================= */
+/* BREAKING NEWS */
+/* ================================================= */
+
+.breaking-news{
+
+    background:#b5121b;
+
+    color:white;
+
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    margin-bottom:18px;
+
+}
+
+#newsContainer{
+
+    margin-top:10px;
+
+    font-size:1.1rem;
+
+    line-height:1.7;
+
+}
+
+/* ================================================= */
+/* KOHTALON KOJU */
+/* ================================================= */
+
+.destiny-card{
+
+    margin-top:25px;
+
+    background:#26352b;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    text-align:center;
+
+    font-size:1.15rem;
+
+    min-height:100px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    line-height:1.6;
+
+}
+
+/* ================================================= */
+/* MUKAUTUVUUS */
+/* ================================================= */
+
+@media (max-width:700px){
+
+    .festival-banner h1{
+
+        font-size:1.45rem;
+
+        letter-spacing:2px;
+
+    }
+
+    .festival-map{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .bottom-nav{
+
+        height:72px;
+
+    }
+
+    .bottom-nav button{
+
+        font-size:1.15rem;
+
+    }
+
+    .bottom-nav button span{
+
+        font-size:.62rem;
+
+    }
+
+    .event-time{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:1rem;
+
+    }
+
+}
+
+/* ================================================= */
+/* PIENIÄ ANIMAATIOITA */
+/* ================================================= */
+
+.card{
+
+    animation:cardAppear .35s ease;
+
+}
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.primary-button{
+
+    box-shadow:
+
+        0 6px 16px rgba(181,18,27,.35);
+
+}
+
+.passport{
+
+    transition:.3s;
+
+}
+
+.passport:hover{
+
+    transform:rotate(-1deg) scale(1.01);
+
+}
+
+.map-pin{
+
+    transition:
+
+        transform .25s,
+
+        background .25s,
+
+        border-color .25s;
+
+}
+    }
+
+}
