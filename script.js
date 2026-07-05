@@ -1,837 +1,477 @@
 /* ================================================= */
 /* TAMMALAHTIROCK v3 */
-/* STYLE.CSS */
+/* SCRIPT.JS */
 /* ================================================= */
 
-*{
+/* ================================================ */
+/* SIVUJEN VAIHTO */
+/* ================================================ */
 
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+function showPage(pageId){
 
-}
+    const pages=document.querySelectorAll(".page");
 
-html{
+    pages.forEach(page=>{
 
-    scroll-behavior:smooth;
+        page.classList.remove("active");
 
-}
+    });
 
-body{
-
-    background:#132018;
-
-    color:white;
-
-    font-family:
-
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    min-height:100vh;
+    document
+        .getElementById(pageId)
+        .classList.add("active");
 
 }
 
-/* ================================================= */
-/* YLÄOSA */
-/* ================================================= */
+/* ================================================ */
+/* FESTARINIMET */
+/* ================================================ */
 
-.hero{
+const festivalNames=[
 
-    background:
+    "DJ Hyttyskeisari",
+    "Lady Glitter",
+    "Kapteeni Crocs",
+    "Metsädisko",
+    "MC Makkara",
+    "DJ Nuotio",
+    "Sähköorava",
+    "Rokkikauris",
+    "Bassikarhu",
+    "Diskopeura",
+    "Glitter-Guru",
+    "Hyttysvelho",
+    "Saunashamaani",
+    "Metsäbasso",
+    "Rumpukarhu",
+    "DJ Tammilahti"
 
-        linear-gradient(
+];
 
-            rgba(0,0,0,.35),
+/* ================================================ */
+/* LEIMAT */
+/* ================================================ */
 
-            rgba(0,0,0,.65)
+const defaultStamps=[
 
-        ),
+    "📸",
+    "🎲",
+    "✨"
 
-        linear-gradient(
+];
 
-            180deg,
+/* ================================================ */
+/* PASSIN LUONTI */
+/* ================================================ */
 
-            #35552d,
+function createPassport(){
 
-            #132018
+    const input=document.getElementById("playerName");
 
-        );
+    const realName=input.value.trim();
 
-    padding:
+    if(realName===""){
 
-        40px
-        20px
-        30px;
+        alert("Kirjoita etunimesi.");
 
-    text-align:center;
-
-}
-
-.hero-overlay{
-
-    max-width:700px;
-
-    margin:auto;
-
-}
-
-.festival-banner{
-
-    display:inline-block;
-
-    background:#b5121b;
-
-    color:white;
-
-    padding:
-
-        16px
-        28px;
-
-    border-radius:10px;
-
-    box-shadow:
-
-        0 8px 24px rgba(0,0,0,.35);
-
-}
-
-.festival-banner h1{
-
-    letter-spacing:4px;
-
-    font-size:2rem;
-
-}
-
-.festival-tagline{
-
-    margin-top:18px;
-
-    font-size:1.05rem;
-
-    opacity:.9;
-
-}
-
-.festival-location{
-
-    margin-top:8px;
-
-    color:#f6d36c;
-
-    font-weight:bold;
-
-}
-
-/* ================================================= */
-/* NAVIGOINTI */
-/* ================================================= */
-
-.bottom-nav{
-
-    position:fixed;
-
-    bottom:0;
-
-    left:0;
-
-    right:0;
-
-    height:76px;
-
-    background:#1a1a1a;
-
-    display:flex;
-
-    justify-content:space-around;
-
-    align-items:center;
-
-    border-top:
-
-        2px solid #b5121b;
-
-    z-index:999;
-
-}
-
-.bottom-nav button{
-
-    background:none;
-
-    border:none;
-
-    color:white;
-
-    cursor:pointer;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:4px;
-
-    font-size:1.35rem;
-
-    transition:.25s;
-
-}
-
-.bottom-nav button span{
-
-    font-size:.70rem;
-
-}
-
-.bottom-nav button:hover{
-
-    transform:translateY(-4px);
-
-    color:#f6d36c;
-
-}
-
-/* ================================================= */
-/* SIVUT */
-/* ================================================= */
-
-main{
-
-    max-width:900px;
-
-    margin:auto;
-
-    padding:
-
-        20px;
-
-    padding-bottom:120px;
-
-}
-
-.page{
-
-    display:none;
-
-    animation:
-
-        fadeIn .35s;
-
-}
-
-.page.active{
-
-    display:block;
-
-}
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-        transform:
-
-            translateY(12px);
+        return;
 
     }
 
-    to{
+    const festivalName=
 
-        opacity:1;
+        festivalNames[
+            Math.floor(
+                Math.random()*festivalNames.length
+            )
+        ];
 
-        transform:
+    const id=
 
-            translateY(0);
+        Math.floor(
+            100+
+            Math.random()*900
+        );
+
+    const passport={
+
+        realName,
+
+        festivalName,
+
+        id,
+
+        stamps:defaultStamps
+
+    };
+
+    localStorage.setItem(
+
+        "tammalahtiPassport",
+
+        JSON.stringify(passport)
+
+    );
+
+    renderPassport();
+
+}
+
+/* ================================================ */
+/* PASSIN PIIRTO */
+/* ================================================ */
+
+function renderPassport(){
+
+    const card=
+
+        document.getElementById("passportCard");
+
+    const saved=
+
+        localStorage.getItem(
+
+            "tammalahtiPassport"
+
+        );
+
+    if(!saved){
+
+        card.innerHTML="";
+
+        return;
+
+    }
+
+    const passport=
+
+        JSON.parse(saved);
+
+    let stampHTML="";
+
+    passport.stamps.forEach(stamp=>{
+
+        stampHTML+=`
+
+            <div class="stamp">
+
+                ${stamp}
+
+            </div>
+
+        `;
+
+    });
+
+    card.innerHTML=`
+
+        <div class="passport">
+
+            <h3>
+
+                ${passport.festivalName}
+
+            </h3>
+
+            <p>
+
+                ${passport.realName}
+
+            </p>
+
+            <div class="passport-id">
+
+                Festaripassi #${passport.id}
+
+            </div>
+
+            <div class="stamp-container">
+
+                ${stampHTML}
+
+            </div>
+
+        </div>
+
+    `;
+
+    document.getElementById(
+
+        "welcomeMessage"
+
+    ).innerHTML=
+
+        "Tervetuloa takaisin, <strong>"+
+
+        passport.festivalName+
+
+        "</strong>!";
+
+}
+/* ================================================= */
+/* ALUEKARTTA */
+/* ================================================= */
+
+const locations = {
+
+    stage: {
+
+        title: "🎤 Päälava",
+
+        text:
+            "Illan pääesiintyjä aloittaa klo 20.00."
+
+    },
+
+    photo: {
+
+        title: "📸 Valokuvakoju",
+
+        text:
+            "Ota kuva kavereiden kanssa. Kuvat ilmestyvät myöhemmin galleriaan."
+
+    },
+
+    glitter: {
+
+        title: "✨ Glitter- & tatuointipaja",
+
+        text:
+            "Koristele kasvosi glitterillä tai ota väliaikainen festaritatuointi."
+
+    },
+
+    destiny: {
+
+        title: "🎲 Kohtalon Koju",
+
+        text:
+            "Paina nappia ja kohtalo määrää seuraavan tehtäväsi."
+
+    }
+
+};
+
+function showLocation(id){
+
+    const info=document.getElementById("mapInfo");
+
+    if(!locations[id]){
+
+        info.innerHTML="Valitse kohde.";
+
+        return;
+
+    }
+
+    info.innerHTML=
+
+        "<h3>"+locations[id].title+"</h3>" +
+
+        "<p>"+locations[id].text+"</p>";
+
+}
+
+/* ================================================= */
+/* FEIKKIUUTISET */
+/* ================================================= */
+
+const newsList=[
+
+"🦟 Hyttyset julistivat VIP-alueen omakseen.",
+
+"🎸 Bändi lupasi vielä yhden ylimääräisen kappaleen.",
+
+"🔥 Nuotiolla epäillään syntyneen uusi makkaranpaistoennätys.",
+
+"✨ Glitterivarasto pienenee huolestuttavaa vauhtia.",
+
+"📸 Valokuvakoju etsii illan parasta poseerausta.",
+
+"🎲 Kohtalon Koju raportoi poikkeuksellisen rohkeita osallistujia.",
+
+"🌲 Metsä hyväksyi tämän vuoden festarit virallisesti.",
+
+"🎤 Soundcheck kuului naapurikuntaan asti.",
+
+"🥳 Tunnelma nousi juuri uudelle tasolle.",
+
+"🍺 Kadonnut juomatölkki löytyi nuotion vierestä.",
+
+"🕺 Ilmakitarakilpailun taso yllätti tuomariston.",
+
+"🎶 Yleisö lauloi mukana jo ennen ensimmäistä kappaletta.",
+
+"🍔 Grillimestari pyysi työrauhaa.",
+
+"🦉 Pöllö seurasi keikkaa eturivistä.",
+
+"🌧️ Sää päätti olla festarien puolella."
+
+];
+
+let currentNews=0;
+
+function rotateNews(){
+
+    const box=
+
+        document.getElementById("newsContainer");
+
+    if(!box) return;
+
+    box.innerHTML=newsList[currentNews];
+
+    currentNews++;
+
+    if(currentNews>=newsList.length){
+
+        currentNews=0;
 
     }
 
 }
-/* ================================================= */
-/* KORTIT */
-/* ================================================= */
-
-.card{
-
-    background:#1d2b22;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:18px;
-
-    padding:22px;
-
-    margin-bottom:22px;
-
-    box-shadow:
-
-        0 10px 30px rgba(0,0,0,.30);
-
-}
-
-.card h2{
-
-    margin-bottom:14px;
-
-    color:#ffffff;
-
-}
-
-.card p{
-
-    line-height:1.6;
-
-    color:#d8d8d8;
-
-}
 
 /* ================================================= */
-/* PAINIKKEET */
+/* AUTOMAATTINEN UUTISKIERTO */
 /* ================================================= */
 
-.primary-button{
+setInterval(
 
-    width:100%;
+    rotateNews,
 
-    background:#b5121b;
+    30000
 
-    color:white;
-
-    border:none;
-
-    border-radius:12px;
-
-    padding:15px;
-
-    font-size:1rem;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.primary-button:hover{
-
-    background:#cf1d28;
-
-    transform:translateY(-2px);
-
-}
-
-.primary-button:active{
-
-    transform:scale(.98);
-
-}
+);
 
 /* ================================================= */
-/* INPUTIT */
+/* ENSIMMÄINEN UUTINEN */
 /* ================================================= */
 
-input{
-
-    width:100%;
-
-    padding:15px;
-
-    border-radius:12px;
-
-    border:none;
-
-    margin:16px 0;
-
-    font-size:1rem;
-
-    background:#2d3d33;
-
-    color:white;
-
-}
-
-input::placeholder{
-
-    color:#bfc8bf;
-
-}
-
-/* ================================================= */
-/* ETUSIVU */
-/* ================================================= */
-
-.next-event{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-}
-
-.event-time{
-
-    background:#b5121b;
-
-    width:72px;
-
-    height:72px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:1.2rem;
-
-    font-weight:bold;
-
-}
-
-.event-info{
-
-    line-height:1.5;
-
-}
-
-/* ================================================= */
-/* AIKAJANA */
-/* ================================================= */
-
-.timeline{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
-}
-
-.timeline-item{
-
-    display:flex;
-
-    gap:18px;
-
-}
-
-.time{
-
-    min-width:70px;
-
-    font-weight:bold;
-
-    color:#f6d36c;
-
-}
-
-.content{
-
-    flex:1;
-
-    background:#26352b;
-
-    border-radius:10px;
-
-    padding:12px;
-
-}
-
-/* ================================================= */
-/* FESTARIPASSI */
-/* ================================================= */
-
-#passportCard{
-
-    margin-top:22px;
-
-}
-
-.passport{
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #b5121b,
-            #6e0d13
-        );
-
-    border-radius:20px;
-
-    padding:26px;
-
-    color:white;
-
-    box-shadow:
-
-        0 12px 30px rgba(0,0,0,.35);
-
-}
-
-.passport h3{
-
-    font-size:1.7rem;
-
-    margin-bottom:8px;
-
-    letter-spacing:2px;
-
-}
-
-.passport-id{
-
-    margin-top:16px;
-
-    font-size:.9rem;
-
-    opacity:.9;
-
-}
-
-.stamp-container{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-    margin-top:20px;
-
-}
-
-.stamp{
-
-    width:52px;
-
-    height:52px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.18);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:1.4rem;
-
-}
-/* ================================================= */
-/* FESTARIKARTTA */
-/* ================================================= */
-
-.festival-map{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:18px;
-
-    margin-top:20px;
-
-}
-
-.map-pin{
-
-    background:#2c3d32;
-
-    border:2px solid rgba(255,255,255,.08);
-
-    border-radius:18px;
-
-    min-height:110px;
-
-    color:white;
-
-    cursor:pointer;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:10px;
-
-    font-size:2rem;
-
-    transition:.25s;
-
-}
-
-.map-pin span{
-
-    font-size:.90rem;
-
-    font-weight:bold;
-
-}
-
-.map-pin:hover{
-
-    transform:translateY(-4px);
-
-    background:#36513f;
-
-    border-color:#f6d36c;
-
-}
-
-.map-info{
-
-    margin-top:22px;
-
-    padding:18px;
-
-    background:#26352b;
-
-    border-radius:12px;
-
-    min-height:70px;
-
-}
-
-/* ================================================= */
-/* KUVAGALLERIA */
-/* ================================================= */
-
-.gallery-grid{
-
-    display:grid;
-
-    grid-template-columns:
-
-        repeat(auto-fit,minmax(140px,1fr));
-
-    gap:16px;
-
-    margin-top:20px;
-
-}
-
-.gallery-placeholder{
-
-    grid-column:1/-1;
-
-    text-align:center;
-
-    padding:50px 20px;
-
-    border-radius:14px;
-
-    background:#26352b;
-
-    color:#bfc8bf;
-
-}
-
-.gallery-image{
-
-    width:100%;
-
-    aspect-ratio:1;
-
-    object-fit:cover;
-
-    border-radius:14px;
-
-    box-shadow:
-
-        0 6px 18px rgba(0,0,0,.30);
-
-}
-
-/* ================================================= */
-/* BREAKING NEWS */
-/* ================================================= */
-
-.breaking-news{
-
-    background:#b5121b;
-
-    color:white;
-
-    display:inline-block;
-
-    padding:8px 14px;
-
-    border-radius:999px;
-
-    font-weight:bold;
-
-    letter-spacing:1px;
-
-    margin-bottom:18px;
-
-}
-
-#newsContainer{
-
-    margin-top:10px;
-
-    font-size:1.1rem;
-
-    line-height:1.7;
-
-}
-
+rotateNews();
 /* ================================================= */
 /* KOHTALON KOJU */
 /* ================================================= */
 
-.destiny-card{
+const destinyTasks = [
 
-    margin-top:25px;
+"📸 Ota selfie lähimmän festarikaverin kanssa.",
+"🌲 Käy halaamassa puuta.",
+"🎸 Soita 15 sekunnin ilmakitarasoolo.",
+"😂 Kerro huonoin vitsisi kolmelle ihmiselle.",
+"✨ Käy hakemassa glitteriä.",
+"👏 Anna aplodit ensimmäiselle vastaantulijalle.",
+"🍔 Käy tervehtimässä grillimestaria.",
+"🎤 Laula kertosäettä seuraavasta biisistä.",
+"🤘 Tee rockmerkki seuraavaan valokuvaan.",
+"😁 Hymyile seuraavat kaksi minuuttia.",
+"🕺 Tanssi 30 sekuntia.",
+"🧍 Seiso kuin turvamies 20 sekuntia.",
+"🎩 Kävele kuin rocktähti seuraavaan kojuun.",
+"🤝 Esittäydy ihmiselle, jota et vielä tunne.",
+"🎲 Pyydä jotakuta arpomaan kohtalo puolestasi.",
+"🔥 Käy nuotiolla.",
+"📸 Ota maisemakuva festarialueesta.",
+"🎵 Arvaa seuraavan kappaleen nimi.",
+"🍻 Kilistä juomaa jonkun kanssa.",
+"🦟 Hätistele kuvitteellisia hyttysiä 10 sekuntia."
 
-    background:#26352b;
+];
 
-    border-radius:16px;
+let previousTask = -1;
 
-    padding:25px;
+function drawDestiny(){
 
-    text-align:center;
+    let index;
 
-    font-size:1.15rem;
+    do{
 
-    min-height:100px;
+        index = Math.floor(Math.random()*destinyTasks.length);
 
-    display:flex;
+    }while(index===previousTask && destinyTasks.length>1);
 
-    justify-content:center;
+    previousTask=index;
 
-    align-items:center;
+    document.getElementById("destinyCard").innerHTML=
 
-    line-height:1.6;
-
-}
-
-/* ================================================= */
-/* MUKAUTUVUUS */
-/* ================================================= */
-
-@media (max-width:700px){
-
-    .festival-banner h1{
-
-        font-size:1.45rem;
-
-        letter-spacing:2px;
-
-    }
-
-    .festival-map{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .bottom-nav{
-
-        height:72px;
-
-    }
-
-    .bottom-nav button{
-
-        font-size:1.15rem;
-
-    }
-
-    .bottom-nav button span{
-
-        font-size:.62rem;
-
-    }
-
-    .event-time{
-
-        width:60px;
-
-        height:60px;
-
-        font-size:1rem;
-
-    }
+        "<strong>"+destinyTasks[index]+"</strong>";
 
 }
 
 /* ================================================= */
-/* PIENIÄ ANIMAATIOITA */
+/* GALLERIAN VALMIUS */
 /* ================================================= */
 
-.card{
+function loadGallery(){
 
-    animation:cardAppear .35s ease;
+    const gallery=document.getElementById("galleryGrid");
 
-}
+    if(!gallery) return;
 
-@keyframes cardAppear{
+    const photos=JSON.parse(localStorage.getItem("gallery") || "[]");
 
-    from{
+    if(photos.length===0){
 
-        opacity:0;
-
-        transform:translateY(12px);
+        return;
 
     }
 
-    to{
+    gallery.innerHTML="";
 
-        opacity:1;
+    photos.forEach(photo=>{
 
-        transform:translateY(0);
+        const img=document.createElement("img");
+
+        img.src=photo;
+
+        img.className="gallery-image";
+
+        gallery.appendChild(img);
+
+    });
+
+}
+
+/* ================================================= */
+/* LEIMAT */
+/* ================================================= */
+
+function addStamp(icon){
+
+    const saved=localStorage.getItem("tammalahtiPassport");
+
+    if(!saved) return;
+
+    const passport=JSON.parse(saved);
+
+    if(!passport.stamps.includes(icon)){
+
+        passport.stamps.push(icon);
 
     }
 
-}
+    localStorage.setItem(
 
-.primary-button{
+        "tammalahtiPassport",
 
-    box-shadow:
+        JSON.stringify(passport)
 
-        0 6px 16px rgba(181,18,27,.35);
+    );
 
-}
-
-.passport{
-
-    transition:.3s;
+    renderPassport();
 
 }
 
-.passport:hover{
+/* ================================================= */
+/* SOVELLUKSEN KÄYNNISTYS */
+/* ================================================= */
 
-    transform:rotate(-1deg) scale(1.01);
+document.addEventListener("DOMContentLoaded",()=>{
 
-}
+    renderPassport();
 
-.map-pin{
+    loadGallery();
 
-    transition:
+    showPage("home");
 
-        transform .25s,
-
-        background .25s,
-
-        border-color .25s;
-
-}
+});
