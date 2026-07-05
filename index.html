@@ -1,1 +1,16 @@
-<!DOCTYPE html><html lang="fi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tammalahtirock</title><link rel="stylesheet" href="style.css"></head><body><header class="hero"><div class="banner">TAMMALAHTIROCK</div><p>Maailman rennoimmat yksityisfestarit</p></header><main><section class="card"><h2 id="welcome">Tervetuloa!</h2><input id="playerName" placeholder="Etunimesi"><button onclick="createPassport()">Luo festaripassi</button><div id="passportCard"></div></section><section class="card"><h2>📰 Feikkiuutinen</h2><div id="news"></div></section><section class="card"><h2>🎲 Kohtalon Koju</h2><button onclick="drawDestiny()">Arvo kohtalo</button><p id="destiny"></p></section></main><script src="script.js"></script></body></html>
+<!DOCTYPE html><html lang="fi"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tammalahtirock</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="hero"><div class="banner">TAMMALAHTIROCK</div><p>Maailman rennoimmat yksityisfestarit</p></header>
+<main>
+<section class="card"><h2 id="welcome">Tervetuloa!</h2><input id="playerName" placeholder="Etunimesi"><button onclick="createPassport()">Luo festaripassi</button><div id="passportCard"></div></section>
+<section class="card"><h2>🗺️ Aluekartta</h2><div class="map">
+<button onclick="showInfo('🎤 Lava','Bändi klo 20')">🎤</button>
+<button onclick="showInfo('📸 Kuvakoju','Ota kuva!')">📸</button>
+<button onclick="showInfo('🎲 Kohtalon Koju','Arvo tehtävä.')">🎲</button>
+<button onclick="showInfo('✨ Glitteri','Kimallusta!')">✨</button>
+</div><div id="mapInfo">Valitse kohde.</div></section>
+<section class="card"><h2>📰 BREAKING NEWS</h2><div id="news"></div></section>
+<section class="card"><h2>🎲 Kohtalon Koju</h2><button onclick="drawDestiny()">Arvo kohtalo</button><p id="destiny"></p></section>
+</main><script src="script.js"></script></body></html>
