@@ -834,3 +834,88 @@ input::placeholder{
     }
 
 }
+/* ================================================= */
+/* VALOKUVAKOJU */
+/* ================================================= */
+
+#camera{
+
+    width:100%;
+
+    border-radius:18px;
+
+    background:#000;
+
+    margin-top:20px;
+
+    box-shadow:
+
+        0 10px 30px rgba(0,0,0,.35);
+
+}
+
+#photoPreview{
+
+    width:100%;
+
+    display:none;
+
+    margin-top:20px;
+
+    border-radius:18px;
+
+    box-shadow:
+
+        0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.photo-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.photo-buttons button{
+
+    width:100%;
+
+}
+
+.photo-buttons button:nth-child(2){
+
+    background:#1d8f3a;
+
+}
+
+.photo-buttons button:nth-child(3){
+
+    background:#0d6efd;
+
+}
+
+.photo-buttons button:hover{
+
+    filter:brightness(1.08);
+
+}
+
+/* Kamera hieman korkeammaksi isommilla näytöillä */
+
+@media (min-width:700px){
+
+    #camera{
+
+        max-height:600px;
+
+        object-fit:cover;
+
+    }
+
+}
