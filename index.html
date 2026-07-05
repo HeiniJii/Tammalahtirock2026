@@ -206,7 +206,69 @@ footer{
     opacity:.5;
 
 }
+.festivalMap{
 
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.mapItem{
+
+background:#1f2937;
+
+padding:20px;
+
+border-radius:15px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.25s;
+
+font-size:1.1rem;
+
+}
+
+.mapItem:hover{
+
+background:#2563eb;
+
+transform:scale(1.05);
+
+}
+
+.mapInfo{
+
+margin-top:20px;
+
+background:#111827;
+
+padding:18px;
+
+border-radius:15px;
+
+min-height:80px;
+
+}
+
+.scheduleItem{
+
+background:#1f2937;
+
+padding:15px;
+
+margin-top:10px;
+
+border-radius:12px;
+
+}
 </style>
 
 </head>
@@ -351,11 +413,45 @@ Valitse kohde kartalta.
 
 <h2>📅 Festariohjelma</h2>
 
-<p>
+<div class="scheduleItem">
 
-Tulossa seuraavassa vaiheessa.
+<strong>17:00</strong>
 
-</p>
+Portit avataan
+
+</div>
+
+<div class="scheduleItem">
+
+<strong>18:00</strong>
+
+Glitteri- & tatuointipaja avautuu
+
+</div>
+
+<div class="scheduleItem">
+
+<strong>19:30</strong>
+
+Kohtalon Koju
+
+</div>
+
+<div class="scheduleItem">
+
+<strong>20:00</strong>
+
+🎤 Bändi
+
+</div>
+
+<div class="scheduleItem">
+
+<strong>22:30</strong>
+
+Nuotio & iltahengailu
+
+</div>
 
 </div>
 
