@@ -515,6 +515,24 @@ Luo festaripassi
 
 <hr style="margin:30px 0;border-color:#333;">
 
+<h3>Lisää leima</h3>
+
+<input
+id="stampCode"
+type="text"
+placeholder="Syötä kojun koodi"
+style="width:100%;padding:15px;border-radius:12px;border:none;">
+
+<br><br>
+
+<button class="heroButton" onclick="addStamp()">
+
+Lisää leima
+
+</button>
+
+<hr style="margin:30px 0;border-color:#333;">
+
 <div id="passportCard">
 
 <h3>Passia ei ole vielä luotu.</h3>
@@ -669,15 +687,15 @@ realName:realName,
 
 festivalName:festivalName,
 
-id:id
+id:id,
+
+stamps:[]
 
 };
 
 localStorage.setItem("passport",JSON.stringify(passport));
 
 renderPassport();
-
-}
 
 function renderPassport(){
 
@@ -689,6 +707,94 @@ return;
 
 }
 
+let html="";
+
+passport.stamps.forEach(stamp=>{
+
+html+=`<div class="stamp">${stamp}</div>`;
+
+});
+
+document.getElementById("passportCard").innerHTML=`
+
+<div class="passport">
+
+<h3>${passport.festivalName}</h3>
+
+<p><strong>Oikea nimi:</strong> ${passport.realName}</p>
+
+<p><strong>Festarinumero:</strong> #${passport.id}</p>
+
+<br>
+
+<h4>Ansaitut leimat</h4>
+
+${html}
+
+</div>
+
+`;
+
+}
+function addStamp(){
+
+let passport=JSON.parse(localStorage.getItem("passport"));
+
+if(!passport){
+
+alert("Luo ensin festaripassi.");
+
+return;
+
+}
+
+let code=document
+.getElementById("stampCode")
+.value
+.trim()
+.toUpperCase();
+
+let stamp="";
+
+if(code==="KUVA"){
+
+stamp="📸 Valokuvakoju";
+
+}
+
+else if(code==="KOHTALO"){
+
+stamp="🎲 Kohtalon Koju";
+
+}
+
+else if(code==="GLITTER"){
+
+stamp="✨ Glitteri- & tatuointipaja";
+
+}
+
+else{
+
+alert("Virheellinen koodi.");
+
+return;
+
+}
+
+if(!passport.stamps.includes(stamp)){
+
+passport.stamps.push(stamp);
+
+}
+
+localStorage.setItem("passport",JSON.stringify(passport));
+
+renderPassport();
+
+document.getElementById("stampCode").value="";
+
+}
 document.getElementById("passportCard").innerHTML=`
 
 <div class="passport">
