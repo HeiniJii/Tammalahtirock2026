@@ -1,0 +1,15 @@
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#fff}
+.hero{background:linear-gradient(135deg,#7c3aed,#2563eb);padding:40px 20px;text-align:center}
+main{padding:20px;padding-bottom:90px;max-width:900px;margin:auto}
+.card{background:#1e293b;border-radius:16px;padding:20px;margin:18px 0;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;height:70px;background:#111827;display:flex;overflow-x:auto}
+.bottom-nav button{flex:1;background:none;border:none;color:#fff;font-size:.8rem}
+.bottom-nav button:hover{background:#1f2937;cursor:pointer}
+.page{display:none}.page.active{display:block}
+.map-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.map-item{background:#334155;padding:18px;border-radius:12px;text-align:center;cursor:pointer;transition:.2s}
+.map-item:hover{transform:scale(1.03);background:#2563eb}
+input{width:100%;padding:12px;border-radius:10px;border:none;margin:10px 0}
+button{padding:10px 16px;border:none;border-radius:10px;background:#ec4899;color:#fff}
+button:hover{background:#db2777;cursor:pointer}
+@media(min-width:700px){.map-grid{grid-template-columns:repeat(3,1fr)}}
