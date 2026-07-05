@@ -504,3 +504,145 @@ function handleQRStamp(){
 }
 
 handleQRStamp();
+/* ================================================= */
+/* VALOKUVAKOJU */
+/* ================================================= */
+
+let cameraStream = null;
+let capturedImage = null;
+
+async function startCamera() {
+
+    try {
+
+        cameraStream = await navigator.mediaDevices.getUserMedia({
+
+            video: {
+                facingMode: "environment"
+            },
+
+            audio: false
+
+        });
+
+        const video = document.getElementById("camera");
+
+        video.srcObject = cameraStream;
+
+        video.play();
+
+    } catch (err) {
+
+        alert("Kameran käynnistäminen epäonnistui.");
+
+        console.error(err);
+
+    }
+
+}
+
+function takePhoto() {
+
+    const video = document.getElementById("camera");
+
+    const canvas = document.getElementById("photoCanvas");
+
+    const preview = document.getElementById("photoPreview");
+
+    canvas.width = video.videoWidth;
+
+    canvas.height = video.videoHeight;
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.drawImage(video, 0, 0);
+
+    capturedImage = canvas.toDataURL("image/jpeg", 0.9);
+
+    preview.src = capturedImage;
+
+    preview.style.display = "block";
+
+}
+
+async function uploadPhoto() {
+
+    if (!capturedImage) {
+
+        alert("Ota ensin kuva.");
+
+        return;
+
+    }
+
+    const blob = await (await fetch(capturedImage)).blob();
+
+    const formData = new FormData();
+
+    formData.append("file", blob);
+
+    formData.append("upload_preset", "Tammalahtirock");
+
+    try {
+
+        const response = await fetch(
+
+            "https://api.cloudinary.com/v1_1/ytv9w3o4/image/upload",
+
+            {
+
+                method: "POST",
+
+                body: formData
+
+            }
+
+        );
+
+        const result = await response.json();
+
+        if (result.secure_url) {
+
+            alert("📸 Kuva ladattu onnistuneesti!");
+
+            savePhotoToGallery(result.secure_url);
+
+        } else {
+
+            alert("Lataus epäonnistui.");
+
+            console.log(result);
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Virhe kuvan lähettämisessä.");
+
+    }
+
+}
+
+function savePhotoToGallery(url) {
+
+    let gallery = JSON.parse(
+
+        localStorage.getItem("gallery") || "[]"
+
+    );
+
+    gallery.unshift(url);
+
+    localStorage.setItem(
+
+        "gallery",
+
+        JSON.stringify(gallery)
+
+    );
+
+    loadGallery();
+
+}
